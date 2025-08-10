@@ -86,3 +86,77 @@
     margin-bottom: 8px;
     font-size: 15px;
 }
+
+
+
+@media (max-width: 1024px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-left {
+        flex: unset;
+    }
+
+    .about-right {
+        text-align: center;
+    }
+
+    .about-right p {
+        text-align: center;
+    }
+
+    .difference-section {
+        text-align: center;
+    }
+}
+
+/* Mobile view: reduce gaps, font sizes, and padding */
+@media (max-width: 768px) {
+    .about-container {
+        width: 95%;
+        padding: 15px;
+        margin-top: 70px;
+    }
+
+    .about-logo {
+        width: 180px;
+    }
+
+    .about-right h1 {
+        font-size: 22px;
+    }
+
+    .about-right p {
+        font-size: 14px;
+    }
+
+    .difference-section li {
+        font-size: 14px;
+    }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+    .about-container {
+        padding: 10px;
+    }
+
+    .about-logo {
+        width: 150px;
+    }
+
+    .about-right h1 {
+        font-size: 20px;
+    }
+
+    .about-right p {
+        font-size: 13px;
+    }
+
+    .difference-section li {
+        font-size: 13px;
+    }
+}

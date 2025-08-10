@@ -270,3 +270,59 @@
         transform: translateX(50%);
     }
 }
+
+
+/* Tablets - switch to 2 columns */
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px;
+        width: 90%;
+    }
+}
+
+/* Large mobile - single column, bigger images */
+@media (max-width: 767px) {
+    .products-page {
+        padding: 16px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        width: 100%;
+    }
+
+    .product-card img {
+        height: 180px;
+    }
+
+    .filter-container {
+        justify-content: center;
+    }
+
+    .filter-dropdown {
+        right: 50%;
+        transform: translateX(50%);
+        width: 90%;
+    }
+}
+
+/* Very small screens - compact everything */
+@media (max-width: 480px) {
+    .breadcrumb {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .product-card img {
+        height: 150px;
+    }
+
+    .buy-btn {
+        bottom: 70px;
+        right: 8px;
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+}

@@ -61,7 +61,6 @@
 }
 
 
-/* If you want arrows visible, you can remove the above lines. For screenshot look, we style a small box. */
 
 /* remove button circle */
 .remove-circle {
@@ -145,4 +144,71 @@
   .bottom-row { grid-template-columns: 1fr 140px 100%; grid-auto-rows:auto; }
   .summary-box { width:100%; }
   .cart-item-card, .list-header { grid-template-columns: 2fr 1fr 1fr 1fr 48px; }
+}
+
+
+/* Existing 1000px breakpoint stays untouched */
+
+/* 1024px - Tablet/Laptop */
+@media (max-width: 1024px) {
+  .cart-page {
+    padding: 10px;
+  }
+  .cart-heading-box h2 {
+    font-size: 1.6rem;
+  }
+  .cart-items .item {
+    gap: 15px;
+  }
+  .cart-summary {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+/* 768px - Tablet/Small Devices */
+@media (max-width: 768px) {
+  .cart-items {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cart-items .item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .cart-summary {
+    margin-top: 25px;
+  }
+  .quantity-selector button {
+    padding: 5px 10px;
+  }
+}
+
+/* 480px - Mobile Phones */
+@media (max-width: 480px) {
+  .cart-heading-box h2 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .cart-items .item img {
+    width: 80px;
+    height: auto;
+  }
+  .cart-items .item {
+    gap: 10px;
+  }
+  .quantity-selector input {
+    width: 35px;
+    font-size: 0.9rem;
+  }
+  .cart-summary {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+  .cart-summary button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 8px;
+  }
 }

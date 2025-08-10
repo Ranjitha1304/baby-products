@@ -600,3 +600,88 @@ h2 {
   display: block;
 }
 
+
+/* ========================= */
+/* RESPONSIVE MEDIA QUERIES */
+/* ========================= */
+
+/* Mobile devices (320px – 767px) */
+@media (min-width: 320px) and (max-width: 767px) {
+  h2 {
+    font-size: 1.6rem;
+  }
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .product-card,
+  .card,
+  .trust-card {
+    width: 90%;
+  }
+  .trending-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .trending-image-wrapper img {
+    width: 100%;
+    border-radius: 20px;
+  }
+  .trending-content {
+    text-align: center;
+    max-width: 100%;
+  }
+  .testimonials-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .testimonial-card {
+    width: 90%;
+  }
+  .faq-container {
+    padding: 0 10px;
+  }
+}
+
+/* Tablets (768px – 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .card-container {
+    justify-content: center;
+    gap: 20px;
+  }
+  .product-card,
+  .card,
+  .trust-card {
+    width: 45%;
+  }
+  .trending-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .trending-image-wrapper img {
+    width: 80%;
+  }
+  .trending-content {
+    text-align: center;
+  }
+  .testimonials-container {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+/* Small Desktops (1024px – 1300px) */
+@media (min-width: 1024px) and (max-width: 1300px) {
+  .card-container {
+    gap: 25px;
+  }
+  .product-card,
+  .card,
+  .trust-card {
+    width: 220px;
+  }
+  .trending-image-wrapper img {
+    width: 350px;
+  }
+}
