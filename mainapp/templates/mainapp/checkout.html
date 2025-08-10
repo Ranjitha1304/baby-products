@@ -1,0 +1,25 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+
+
+
+<!-- <h1>Checkout Page</h1>
+<p>This is a placeholder page.</p> -->
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+    <p>Home &gt; Add To Cart &gt; Payments &gt; Order Complete &gt;</p>
+</div>
+
+<div class="container">
+    <img src="{% static 'images/ordercomplete.png' %}" >
+    <h4>Order Id: OCD1232</h4>
+    <h2>Your Order Is Completed!</h2>
+    <p>Thank You for your order! Your order is being processed and will be completed within 3-6 hours. You will receive an email confirmation when your order is completed.</p>
+
+</div>
+
+
+{% endblock %}

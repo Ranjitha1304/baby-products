@@ -1,0 +1,88 @@
+.about-container {
+    width:85%;
+    margin: auto;
+    padding: 20px 40px;
+    margin-top: 90px;
+
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    color: #000;
+    text-decoration: none;
+}
+
+.breadcrumb span {
+    margin: 0 5px;
+}
+
+.about-content {
+    display: flex;
+    align-items: flex-start;
+    
+    gap: 50px;
+}
+
+.about-right p {
+    text-align: justify;
+    font-weight: bold;
+}
+
+
+.about-left {
+    flex: 0 0 200px;
+    text-align: center;
+}
+
+.about-logo {
+    width: 240px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.about-right {
+    flex: 1;
+}
+
+.about-right h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.about-right p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.difference-section {
+    font-size: 14px;
+}
+
+.diff-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.difference-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.difference-section li {
+    margin-bottom: 8px;
+    font-size: 15px;
+}

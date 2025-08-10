@@ -1,0 +1,113 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+
+<div class="product-detail-container">
+
+  <!-- Left: Thumbnails -->
+  <div class="left-thumbnails">
+    {% for img in images %}
+      <div class="thumbnail">
+        <img src="{{ img.image.url }}" onclick="changeMainImage('{{ img.image.url }}')">
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Center: Main Image -->
+  <div class="main-image-container">
+    <img id="mainImage" src="{{ product.image.url }}" alt="{{ product.name }}">
+    <div class="carousel-dots">
+      {% for i in images %}
+        <span class="dot {% if forloop.counter == 3 %}active{% endif %}"></span>
+      {% endfor %}
+    </div>
+    <div class="coupon">Coupon: EB55</div>
+  </div>
+
+  <!-- Right: Product Info -->
+  <div class="product-info">
+
+    <!-- Bold 2-3 lines -->
+    <div class="highlight-text">
+      {{ product.highlight_text }}
+    </div>
+
+    <!-- Static: stars, reviews -->
+    <div class="reviews-stock">
+      <span class="stars">★★★★★</span>
+      <span class="reviews">(18 Reviews)</span> | <span class="stock">In Stock</span>
+    </div>
+
+    <!-- Description -->
+    <p class="description">
+      {{ product.description }}
+    </p>
+
+    <!-- Colors and Size (Static) -->
+    <div class="color-size">
+      <p>Colours: <span class="color-dot blue"></span> <span class="color-dot purple"></span></p>
+      <p>Size: Free Size</p>
+    </div>
+
+    <!-- Price -->
+    <div class="pricing">
+      <span class="mrp">MRP ₹<s>{{ product.mrp }}</s></span>
+      <span class="price">Sale Price ₹<strong>{{ product.price }}</strong></span>
+    </div>
+
+    <!-- Quantity and Buy Now -->
+<!-- Quantity and Buy Now -->
+<div class="buy-section">
+  <form method="post" action="{% url 'buy_now' product.id %}">
+    {% csrf_token %}
+    <div class="quantity-selector"> 
+      <button type="button" onclick="decrementQty()">-</button>
+      <input type="text" id="qty" name="quantity" value="1" readonly>
+      <button type="button" onclick="incrementQty()">+</button>
+    </div>
+    <button type="submit" class="buy-now-btn">Buy Now</button>
+  </form>
+</div>
+
+    <!-- Delivery Info -->
+    <div class="delivery-boxes">
+      <div class="delivery-box" onclick="location.href='{% url 'cart' %}'">
+        <i class='bx bx-truck'></i>
+        <div>
+          <p><strong>Free Delivery</strong></p>
+          <p class="pincode-link">Enter your postal code for Delivery Availability</p>
+        </div>
+      </div>
+      <div class="delivery-box">
+        <i class='bx bx-refresh'></i>
+        <div>
+          <p><strong>Return Delivery</strong></p>
+          <p>Free 7 Days Delivery Returns. <a href="{% url 'about' %}"><u>Details</u></a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function changeMainImage(src) {
+    document.getElementById("mainImage").src = src;
+  }
+
+  function incrementQty() {
+    let qty = document.getElementById("qty");
+    qty.value = parseInt(qty.value) + 1;
+  }
+
+  function decrementQty() {
+    let qty = document.getElementById("qty");
+    if (parseInt(qty.value) > 1) {
+      qty.value = parseInt(qty.value) - 1;
+    }
+  }
+</script>
+{% endblock %}

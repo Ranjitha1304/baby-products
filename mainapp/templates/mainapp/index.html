@@ -1,0 +1,407 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+
+
+<section class="hero-section">
+  <img src="{% static 'images/hero.png' %}" alt="Hero Image">
+</section>
+
+
+<!-- Featured Categories Section -->
+<section class="featured-categories">
+  <h2>Featured Categories</h2>
+  <p class="subheading">Everything Your Baby Needs</p>
+
+  <div class="card-container">
+    <!-- Card 1 -->
+    <a href="{% url 'product_list' 'pampers' %}" class="card">
+      <img src="{% static 'images/diaper.png' %}" alt="Diapers & Pampers">
+      <div class="card-footer">
+        <span>Diapers & Pampers</span>
+        <div class="icon-box">
+          <i class='bx bx-up-arrow-alt'></i>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="{% url 'product_list' 'girls_fashions' %}" class="card">
+      <img src="{% static 'images/dress.png' %}" alt="Baby Dress">
+      <div class="card-footer">
+        <span>Baby Dress</span>
+        <div class="icon-box">
+          <i class='bx bx-up-arrow-alt'></i>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="{% url 'product_list' 'soap' %}" class="card">
+      <img src="{% static 'images/soap.png' %}" alt="Baby Soap">
+      <div class="card-footer">
+        <span>Baby Soap</span>
+        <div class="icon-box">
+          <i class='bx bx-up-arrow-alt'></i>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="{% url 'product_list' 'stroller' %}" class="card">
+      <img src="{% static 'images/stroller.png' %}" alt="Baby Stroller & Prams">
+      <div class="card-footer">
+        <span>Baby Stroller & Prams</span>
+        <div class="icon-box">
+          <i class='bx bx-up-arrow-alt'></i>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Why Parents Trust Us Section -->
+<section class="trust-section">
+  <h2>Why Parents Trust Us</h2>
+  <p class="subheading">Designed with Love. Backed by Science.</p>
+
+  <div class="trust-cards">
+    <div class="trust-card">
+      <img src="{% static 'images/trust1.png' %}" alt="Baby Stroller & Prams">
+      <div class="trust-content">
+        <h3>Dermatologist Approved</h3>
+        <p>Every product is tested and safe for even the most sensitive baby skin.</p>
+      </div>
+    </div>
+
+    <div class="trust-card">
+      <img src="{% static 'images/trust2.png' %}" alt="Baby Stroller & Prams">
+      <div class="trust-content">
+        <h3>Natural & Non-Toxic Ingredients</h3>
+        <p>We use only gentle, plant based formulas free from harsh chemicals.</p>
+      </div>
+    </div>
+
+    <div class="trust-card">
+      <img src="{% static 'images/trust3.png' %}" alt="Baby Stroller & Prams">
+      <div class="trust-content">
+        <h3>Loved by Thousands of Parents</h3>
+        <p>Real reviews, real results trusted by families across the country.</p>
+      </div>
+    </div>
+
+    <div class="trust-card">
+      <img src="{% static 'images/trust4.png' %}" alt="Baby Stroller & Prams">
+      <div class="trust-content">
+        <h3>Eco-Friendly Promise</h3>
+        <p>From biodegradable packaging to cruelty-<br>free manufacturing, we care for the planet as much as your baby.
+        </p>
+      </div>
+    </div>
+
+    <div class="trust-card">
+      <img src="{% static 'images/trust5.png' %}" alt="Baby Stroller & Prams">
+      <div class="trust-content">
+        <h3>Fast & Reliable Shipping</h3>
+        <p>We deliver your baby’s essentials swiftly and <br>safely because every moment counts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Best Sellers Section -->
+<section class="best-sellers">
+  <h2>Best Sellers</h2>
+  <p class="subheading">Our Most Loved Products</p>
+
+  <div class="card-container">
+    <!-- Card 1 -->
+    <div class="product-card">
+      <span class="badge">NEW</span>
+      <img src="{% static 'images/wipes.png' %}" alt="Wipes">
+      <a href="{% url 'product_list' 'pampers' %}" class="buy-button">Buy</a>
+
+      <div class="card-bottom">
+        <span class="product-name">wipes</span>
+
+        <div class="rating">
+          ⭐⭐⭐⭐⭐
+        </div>
+        <div class="price">
+          <span class="mrp">MRP ₹<s>1444.00</s></span>
+          <span class="final-price">Price ₹1299.00</span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Card 2 -->
+    <div class="product-card">
+      <span class="badge">NEW</span>
+      <img src="{% static 'images/mama_miel.png' %}" alt="Mama Miel Baby">
+      <a href="{% url 'product_list' 'boys_fashions' %}" class="buy-button">Buy</a>
+
+      <div class="card-bottom">
+        <span class="product-name">Mama Miel Baby</span>
+        <div class="rating">
+          ⭐⭐⭐⭐⭐
+        </div>
+        <div class="price">
+          <span class="mrp">MRP ₹<s>1444.00</s></span>
+          <span class="final-price">Price ₹1299.00</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Card 3 -->
+    <div class="product-card">
+      <span class="badge">NEW</span>
+      <img src="{% static 'images/zibuyu.png' %}" alt="Zibuyu">
+      <a href="{% url 'product_list' 'girls_fashions' %}" class="buy-button">Buy</a>
+
+      <div class="card-bottom">
+        <span class="product-name">Zibuyu</span>
+        <div class="rating">
+          ⭐⭐⭐⭐⭐
+        </div>
+        <div class="price">
+          <span class="mrp">MRP ₹<s>1444.00</s></span>
+          <span class="final-price">Price ₹1299.00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Carousel Dots -->
+  <div class="carousel-dots">
+    <span></span>
+    <span></span>
+    <span class="active"></span>
+    <span></span>
+    <span></span>
+  </div>
+</section>
+
+
+
+<!-- Trending Products Section -->
+<section class="trending-products">
+  <h2 class="trending-title">Trending Products</h2>
+  <p class="trending-subtitle">Parent Favorites, Baby Approved</p>
+
+  <div class="trending-container">
+    <!-- Left: Image -->
+    <div class="trending-image-wrapper">
+      <img src="{% static 'images/trending.png' %}" alt="Baby Stroller">
+    </div>
+
+    <!-- Right: Text -->
+    <div class="trending-content">
+      <h3 class="product-title">Baby Stroller</h3>
+      <p class="product-description">
+        Explore the world in comfort with our smooth and stylish baby stroller. Designed for safety, ease, and flexibility perfect for every little adventure. Lightweight, foldable, and parent-friendly for life on the go.
+      </p>
+      <a href="{% url 'product_list' 'stroller' %}" class="buy-now-button">
+        Buy Now
+        <i class='bx bx-up-arrow-alt'></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Trending Products Section -->
+<section class="trending-products">
+
+  <div class="trending-container">
+
+    <!-- Right: Text -->
+    <div class="trending-content">
+      <h3 class="product-title">Feeding Bottle</h3>
+      <p class="product-description">
+        The Baby feeding bottle is made from 100% BPA-free, safe materials. Its soft silicone nipple feels natural and gentle on the baby's mouth. The anti-colic design helps reduce gas and fussiness during feeding. It's lightweight, easy to hold and perfect for everyday use.
+    
+      </p>
+      <a href="{% url 'product_list' 'bottle' %}" class="buy-now-button">
+        Buy Now
+        <i class='bx bx-up-arrow-alt'></i>
+      </a>
+    </div>
+
+        <!-- Left: Image -->
+    <div class="trending-image-wrapper">
+      <img src="{% static 'images/feed_bottle.png' %}" alt="Baby Stroller">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Trending Products Section -->
+<section class="trending-products">
+
+  <div class="trending-container">
+    <!-- Left: Image -->
+    <div class="trending-image-wrapper">
+      <img src="{% static 'images/pampers.png' %}" alt="Baby Stroller">
+    </div>
+
+    <!-- Right: Text -->
+    <div class="trending-content">
+      <h3 class="product-title">Pampers</h3>
+      <p class="product-description">
+        Explore the world in comfort with our smooth and stylish baby stroller. Designed for safety, ease, and flexibility perfect for every little adventure. Lightweight, foldable, and parent-friendly for life on the go.
+      </p>
+      <a href="{% url 'product_list' 'pampers' %}" class="buy-now-button">
+        Buy Now
+        <i class='bx bx-up-arrow-alt'></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Customer Testimonials Section -->
+<section class="testimonials-section">
+  <h2 class="testimonials-title">Customer Testimonials</h2>
+  <p class="testimonials-subtitle">Parent Favorites, Baby Approved</p>
+
+  <div class="testimonials-container">
+    <!-- Testimonial Card 1 -->
+    <div class="testimonial-card">
+      <img src="{% static 'images/cus1.png' %}" alt="Rahul S." class="testimonial-avatar">
+      <h3>Rahul S. – Bangalore, India</h3>
+      <p class="testimonial-text">
+        “We love the stroller – lightweight, easy to fold, and super smooth on roads. Perfect for city walks. The quality feels premium, and my daughter is always comfy in it.”
+      </p>
+    </div>
+
+    <!-- Testimonial Card 2 -->
+    <div class="testimonial-card">
+      <img src="{% static 'images/cus2.png' %}" alt="Priya M." class="testimonial-avatar">
+      <h3>Priya M. – Chennai, India</h3>
+      <p class="testimonial-text">
+        “The EarthBubs diapers are amazing! My baby sleeps through the night without any leaks or rashes. I’ve tried many brands, but this one is truly gentle and reliable.”
+      </p>
+    </div>
+
+    <!-- Testimonial Card 3 -->
+    <div class="testimonial-card">
+      <img src="{% static 'images/cus3.png' %}" alt="Anika R." class="testimonial-avatar">
+      <h3>Anika R. – Mumbai, India</h3>
+      <p class="testimonial-text">
+        “I ordered the baby Soap kit and I’m blown away. The lotion and wash are so gentle, and the natural fragrance is lovely. No irritation at all – just soft, healthy skin.”
+      </p>
+    </div>
+  </div>
+
+  <!-- Pagination Dots -->
+  <div class="carousel-dots">
+    <span></span>
+    <span></span>
+    <span class="active"></span>
+    <span></span>
+    <span></span>
+  </div>
+</section>
+
+
+
+<!-- FAQ Section -->
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <p class="faq-subtitle">We’re Here to Help – Every Step of the Way</p>
+
+  <div class="faq-container">
+    <!-- FAQ Item 1 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Are your products safe for newborns?</span>
+        <div class="faq-icon"></div>
+      </div>
+      <div class="faq-answer">
+        Yes, all our products are dermatologically tested and made with gentle, non-toxic ingredients that are safe for newborns and sensitive skin.
+      </div>
+    </div>
+
+    <!-- FAQ Item 2 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How long does delivery take?</span>
+        <div class="faq-icon"></div>
+      </div>
+      <div class="faq-answer">
+        Delivery usually takes 3–5 business days depending on your location.
+      </div>
+    </div>
+
+    <!-- FAQ Item 3 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Can I return or exchange a product?</span>
+        <div class="faq-icon"></div>
+      </div>
+      <div class="faq-answer">
+        Yes, you can request a return or exchange within 7 days of delivery.
+      </div>
+    </div>
+
+    <!-- FAQ Item 4 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What payment methods do you accept?</span>
+        <div class="faq-icon"></div>
+      </div>
+      <div class="faq-answer">
+        We accept UPI, debit/credit cards, net banking, and COD.
+      </div>
+    </div>
+
+    <!-- FAQ Item 5 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Are your skincare products organic or natural?</span>
+        <div class="faq-icon"></div>
+      </div>
+      <div class="faq-answer">
+        Yes, our products are made with 100% natural, plant-based ingredients.
+      </div>
+    </div>
+
+    <!-- FAQ Item 6 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How can I contact customer support?</span>
+        <div class="faq-icon"></div>
+      </div>
+      <div class="faq-answer">
+        You can reach us via email or the support form available on our Contact page.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const faqItem = question.parentElement;
+      faqItem.classList.toggle('open');
+    });
+  });
+</script>
+
+
+
+{% endblock %}

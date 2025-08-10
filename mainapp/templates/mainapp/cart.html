@@ -1,0 +1,120 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+
+<div class="cart-page">
+
+  <!-- Page heading -->
+  <div class="cart-heading-box">
+    <h2>Your Cart</h2>
+  </div>
+
+  <!-- === ITEMS TABLE (full-width) === -->
+  <div class="items-block">
+    <!-- Header row -->
+    <div class="list-header">
+      <div class="col-product">Product</div>
+      <div class="col-price">Price</div>
+      <div class="col-qty">Quantity</div>
+      <div class="col-sub">Subtotal</div>
+      <div class="col-remove"></div>
+    </div>
+
+    <!-- Items -->
+    {% for item in cart_items %}
+    <div class="cart-item-card" data-id="{{ item.product.id }}">
+      <div class="col-product product-info">
+        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="prod-thumb">
+        <div class="prod-meta">
+          <div class="prod-name">{{ item.product.name }}</div>
+        </div>
+      </div>
+
+      <div class="col-price">₹ {{ item.product.price|floatformat:0 }}</div>
+
+      <!-- Single qty input with arrows -->
+<div class="col-qty">
+  <form method="post" action="{% url 'update_cart' item.product.id %}" class="qty-form">
+    {% csrf_token %}
+    <div class="qty-controls">
+      <button type="submit" name="quantity" value="{{ item.quantity|add:'-1' }}" class="qty-btn">-</button>
+      <span class="qty-display">{{ item.quantity }}</span>
+      <button type="submit" name="quantity" value="{{ item.quantity|add:'1' }}" class="qty-btn">+</button>
+    </div>
+  </form>
+</div>
+
+      <div class="col-sub">₹ {{ item.product.price|multiply:item.quantity|floatformat:0 }}</div>
+
+      <div class="col-remove">
+        <form method="post" action="{% url 'remove_from_cart' item.product.id %}">
+          {% csrf_token %}
+          <button class="remove-circle" type="submit" title="Remove">
+            <i class='bx bx-x'></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- === COUPON (left) + APPLY (center) + CART TOTAL (right) row (below table) === -->
+  <div class="bottom-row">
+    <!-- left: coupon -->
+    <div class="coupon-col">
+      <div class="coupon-input">
+        <i class='bx bx-purchase-tag'></i>
+        <input type="text" placeholder="Coupon Code" aria-label="Coupon code">
+      </div>
+    </div>
+
+    <!-- middle: apply button -->
+    <div class="apply-col">
+      <button class="apply-btn" disabled>Apply Coupon</button>
+    </div>
+
+    <!-- right: cart total -->
+    <div class="summary-col">
+      <div class="summary-box">
+        <h3>Cart Total</h3>
+
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span>₹ {{ subtotal|floatformat:0 }}</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Discount:</span>
+          <span>₹ 250</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Shipping:</span>
+          <span>Free</span>
+        </div>
+
+        <hr>
+
+        <div class="summary-row total">
+          <strong>Total:</strong>
+          <strong>₹ {{ subtotal|floatformat:0|add:"-250" }}</strong>
+        </div>
+
+        <a href="{% url 'checkout' %}" class="checkout-btn">Process to checkout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // update top navbar badge (base.html has <span id="cart-count">)
+  document.addEventListener('DOMContentLoaded', function () {
+    const el = document.getElementById('cart-count');
+    if (el) el.textContent = "{{ cart_count|default:0 }}";
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,135 @@
+
+
+  {% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+  
+
+
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <p>Home &gt; Products &gt; {{ category }}</p>
+</div>
+
+<div class="products-page">
+
+  <!-- Filter -->
+
+<div class="filter-container">
+  <button class="filter-toggle" onclick="toggleFilterDropdown()">
+        <span>Filter</span>
+
+    <img src="{% static 'icons/vertical.png' %}" id="filter-icon" alt="Filter">
+  </button>
+
+  <div class="filter-dropdown" id="filterDropdown">
+    <form method="get" id="filterForm">
+      <!-- Price ranges as clickable buttons -->
+      <div class="filter-section">
+        <button type="submit" name="price" value="100-1000">Price(100-1000)</button>
+        <button type="submit" name="price" value="1000-1500">Price(1000–1500)</button>
+        <button type="submit" name="price" value="1500-2000">Price(1500–2000)</button>
+      </div>
+
+      <!-- Other options -->
+      <label>
+        <input type="checkbox" name="free_shipping" value="1" onchange="document.getElementById('filterForm').submit()"
+          {% if filters.free_shipping == '1' %}checked{% endif %}>
+        Free Shipping
+      </label>
+
+      <label>
+        <input type="checkbox" name="discounts" value="1" onchange="document.getElementById('filterForm').submit()"
+          {% if filters.discounts == '1' %}checked{% endif %}>
+        Discounts
+      </label>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+  <!-- Product Grid -->
+  <div class="product-grid">
+    {% for product in products %}
+    <div class="product-card" onclick="window.location.href='{% url 'product_detail' product.id %}'">
+      <span class="badge">NEW</span>
+      <div class="product-image">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      </div>
+      <div class="card-bottom">
+        <h4 class="product-name">{{ product.name }}</h4>
+<div class="stars">
+  {% for i in range_five %}
+    {% if i < product.rating %}
+      <span class="star">&#9733;</span>
+    {% else %}
+      <span class="star inactive">&#9733;</span>
+    {% endif %}
+  {% endfor %}
+</div>
+        <div class="prices">
+          <span class="mrp">MRP ₹{{ product.mrp }}</span>
+          <span class="price">Price ₹{{ product.price }}</span>
+        </div>
+        <div class="buy-section">
+          <div class="buy-btn">Buy</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+<!-- Pagination -->
+{% if page_obj.has_other_pages %}
+<div class="pagination-container">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li>
+                <a href="?page={{ page_obj.previous_page_number }}{% if filters.price %}&price={{ filters.price }}{% endif %}{% if filters.free_shipping %}&free_shipping=1{% endif %}{% if filters.discounts %}&discounts=1{% endif %}">&lt;</a>
+            </li>
+        {% else %}
+            <li class="disabled"><span>&lt;</span></li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <li class="active"><span>{{ num }}</span></li>
+            {% else %}
+                <li>
+                    <a href="?page={{ num }}{% if filters.price %}&price={{ filters.price }}{% endif %}{% if filters.free_shipping %}&free_shipping=1{% endif %}{% if filters.discounts %}&discounts=1{% endif %}">{{ num }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <li>
+                <a href="?page={{ page_obj.next_page_number }}{% if filters.price %}&price={{ filters.price }}{% endif %}{% if filters.free_shipping %}&free_shipping=1{% endif %}{% if filters.discounts %}&discounts=1{% endif %}">&gt;</a>
+            </li>
+        {% else %}
+            <li class="disabled"><span>&gt;</span></li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+
+</div>
+
+<script>
+function toggleFilterDropdown() {
+  const dropdown = document.getElementById("filterDropdown");
+  const icon = document.getElementById("filter-icon");
+  dropdown.classList.toggle("show");
+  icon.src = dropdown.classList.contains("show")
+    ? "{% static 'icons/vertical.png' %}"
+    : "{% static 'icons/vertical.png' %}";
+}
+</script>
+
+{% endblock %}  
